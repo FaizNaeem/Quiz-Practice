@@ -1,104 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+      body{
+ /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);       background: rgb(2,0,36); */
+ background-image: url(./bg.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+      }
+      .main{
+        display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-direction: column;
+       height: 100vh;
+      }
+      h1{
+        color: black;
+      }
+    .btn{
+      background: transparent;
+      color: black;
+    }
+    </style>
 </head>
-
 <body>
-  <h1>CODE BY FAIZ NAEEM 😉</h1>
-  <div class="container" id="main">
-    <h1> What is full form HTML</h1>
-    <input type="radio" class="ra" name="question1" id="answer1">
-    <label for="">
-      Hyper Text markup language<br>
-    </label>
-    <input type="radio" class="ra" name="question1" id="">
-    <label for="">
-      Hyper language<br>
-    </label>
-    <input type="radio" class="ra" name="question1" id="">
-    <label for="">
-      Haper language<br>
-    </label>
-    <input type="radio" class="ra" name="question1" id="">
-    <label for="">
-      All of them<br>
-    </label>
-    <button onclick="next(1)">Next</button>
-
-  </div>
-  <div class="container" id="main">
-    <h1> What is full form Css</h1>
-    <input type="radio" class="ra" name="question2" id="answer2">
-    <label for="">
-      Cascading stylesheet <br>
-    </label>
-
-    <input type="radio" class="ra" name="question2" id="">
-    <label for="">
-      Cast casding style <br>
-    </label>
-    <input type="radio" class="ra" name="question2" id="">
-    <label for="">
-      Cell casding style sheet <br>
-    </label>
-    <input type="radio" class="ra" name="question2" id="">
-    <label for="">
-      All of them <br>
-    </label>
-    <button onclick="next(2)">Next</button>
-
-  </div>
-  <div class="container" id="main">
-    <h1> MY Name is?</h1>
-    <input type="radio" class="ra" name="question3" id="answer3">
-    <label for="">
-      Faiz<br>
-    </label>
-    <input type="radio" class="ra" name="question3" id="">
-    <label for="">
-      Faizu<br>
-    </label>
-    <input type="radio" class="ra" name="question3" id="">
-    <label for="">
-      Ali<br>
-
-    </label>
-    <input type="radio" class="ra" name="question3" id="">
-    <label for="">
-      none of them<br>
-    </label>
-    <button onclick="next(3)">Next</button>
-
-  </div>
-  <div class="container" id="main">
-    <h1> whis is answer 200+500</h1>
-    <input type="radio" class="ra" name="question4" id="answer4">
-    <label for="">
-      700<br>
-    </label>
-    <input type="radio" class="ra" name="question4" id="">
-    <label for="">
-      300<br>
-    </label>
-    <input type="radio" class="ra" name="question4" id="">
-    <label for="">
-      1000<br>
-    </label>
-    <input type="radio" class="ra" name="question4" id="">
-    <label for="">
-      600<br>
-    </label>
-    <button onclick="result()">SUBMIT QUIZ</button>
-
-  </div>
+  <div class="main">
+    <h1>QUIZ APP</h1>
+  <a href="./Signup.html" class="btn btn-primary mt-2">Signup</a>
+</div>
 </body>
-
 </html>
