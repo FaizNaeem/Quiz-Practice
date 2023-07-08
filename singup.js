@@ -23,14 +23,14 @@ document.getElementById("btn").addEventListener("click", () => {
       // Signed in 
       const user = userCredential.user;
     
-    // setInterval(()=>{
-        Swal.fire(
-            'CONGRULATION',
-            'singup SUCCES',
-            'success'
-            )
+      Swal.fire(
+        'CONGRULATION',
+        'singup SUCCES',
+        'success'
+        )
+        setTimeout(()=>{
             window.location.href="./login.html"
-        // }, 2000)
+          }, 2000)
       // console.log(user);
       // ...
     })
