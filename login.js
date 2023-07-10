@@ -1,7 +1,8 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 
-import { getAuth,  signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getAuth,  signInWithEmailAndPassword ,GoogleAuthProvider ,signInWithPopup,signInWithRedirect} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCarN6h6FPkS3raGOKAScjMJcdp_r0kHWU",
@@ -15,6 +16,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const google = new GoogleAuthProvider(app);
+const analytics = getAnalytics(app);
+// console.log(google);
 document.getElementById("btn_1").addEventListener("click", () => {
     let email = document.getElementById("text_1").value
     let pass = document.getElementById("pass_1").value
@@ -22,13 +26,33 @@ signInWithEmailAndPassword(auth, email, pass)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    Swal.fire(
-        'CONGRULATION',
-        'LOGIN SUCCES',
-        'success'
-      )
-    window.location.href="./quiz.html"
     console.log(user);
+
+    if(user.emailVerified== true){
+          
+      Swal.fire(
+        'CONGRULATION',
+        'Login SUCCES',
+        'success'
+        )
+        setTimeout(()=>{
+            window.location.href="./quiz.html"
+          }, 2000)
+  }
+  else if(user.emailVerified== false){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please Verify Email',
+    })
+  }
+    // Swal.fire(
+    //     'CONGRULATION',
+    //     'LOGIN SUCCES',
+    //     'success'
+    //   )
+    // window.location.href="./quiz.html"
+    // console.log(user);
 
     // ...
   })
@@ -43,23 +67,31 @@ signInWithEmailAndPassword(auth, email, pass)
     console.log(errorCode,errorMessage);
   });
 });
-// document.getElementById("btn").addEventListener("click", () => {
-//   let a = document.getElementById("text").value
-//   let b = document.getElementById("pass").value
-//   console.log(a, b);
-//   createUserWithEmailAndPassword(auth, a, b)
-//     .then((userCredential) => {
-//       // Signed in 
-//       const user = userCredential.user;
-//       window.location.href="./login.html"
-//       // console.log(user);
-//       // ...
-//     })
-//     .catch((error) => {
-//       alert("hello")
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log(errorCode, errorMessage);
-//     });
-// })
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// google sign IN
+document.getElementById("btn_google").addEventListener("click",()=>{
+  google.setCustomParameters({
+    'login_hint': 'user@example.com'
+});
+signInWithRedirect(auth, google)
+    .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        window.location.href = "./quiz.html"
+        // ...
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorMessage);
+        // ...
+    });
+
+})

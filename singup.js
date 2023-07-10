@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword ,sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCarN6h6FPkS3raGOKAScjMJcdp_r0kHWU",
@@ -21,18 +21,27 @@ document.getElementById("btn").addEventListener("click", () => {
   createUserWithEmailAndPassword(auth, a, b)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
-    
-      Swal.fire(
-        'CONGRULATION',
-        'singup SUCCES',
-        'success'
-        )
-        setTimeout(()=>{
-            window.location.href="./login.html"
-          }, 2000)
-      // console.log(user);
-      // ...
+      const user = userCredential.user
+      sendEmailVerification(auth.currentUser)
+      .then((res)=>{
+        // alert("email send")
+       
+          
+            Swal.fire(
+              'CONGRULATION',
+              'singup SUCCES',
+              'success'
+              )
+              setTimeout(()=>{
+                  window.location.href="./login.html"
+                }, 2000)
+        
+     
+      })
+      console.log(user);
+
+    //   // console.log(user);
+    //   // ...
     })
     .catch((error) => {
       // alert("hello")
