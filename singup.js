@@ -47,7 +47,7 @@ document.getElementById("btn").addEventListener("click", () => {
           
             Swal.fire(
               'CONGRULATION',
-              'Singup SUCCES And Email send',
+              'Singup SUCCES And Email Send',
               'success'
               )
               setTimeout(()=>{

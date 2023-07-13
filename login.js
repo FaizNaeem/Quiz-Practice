@@ -72,7 +72,7 @@ document.getElementById("btn_google").addEventListener("click",()=>{
   google.setCustomParameters({
     'login_hint': 'user@example.com'
 });
-signInWithRedirect(auth, google)
+signInWithPopup(auth, google)
     .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
