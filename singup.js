@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-
+import { getFirestore ,collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword ,sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -14,12 +14,30 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+ const db = getFirestore(app);
 document.getElementById("btn").addEventListener("click", () => {
-  let a = document.getElementById("text").value
-  let b = document.getElementById("pass").value
-  console.log(a, b);
-  createUserWithEmailAndPassword(auth, a, b)
-    .then((userCredential) => {
+  let email = document.getElementById("text").value
+  let pass = document.getElementById("pass").value
+  let name = document.getElementById("name").value
+  let phoneNumber = document.getElementById("number").value
+  console.log(email,pass,name,phoneNumber);
+  createUserWithEmailAndPassword(auth, email, pass)
+  .then(async(userCredential) => {
+    
+    try {
+      const docRef = await addDoc(collection(db, "faiz_1"), {
+        first: name,
+        phoneNumber: phoneNumber,
+        email:  email,
+        password:pass
+        // createdOn: new Date.now()
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+
+    
       // Signed in 
       const user = userCredential.user
       sendEmailVerification(auth.currentUser)
@@ -29,7 +47,7 @@ document.getElementById("btn").addEventListener("click", () => {
           
             Swal.fire(
               'CONGRULATION',
-              'singup SUCCES',
+              'Singup SUCCES And Email send',
               'success'
               )
               setTimeout(()=>{

@@ -11,22 +11,42 @@
       width: 18px;
       margin-bottom: 4px;
     }
+    .google{
+      padding: 10px 15px;
+      /* width: 50px; */
+      /* font-size: 40px; */
+      margin-left: 10px;
+      /* height: 40px; */
+      border-radius: 50%;
+      border: none;
+    }
+   
   </style>
   </head>
   <body>
    <div class="container">
     <h1 class="text-center mt-5 mb-3 ">Login</h1>
-    <div class="input-group mb-3 mt-3">
-       
-        <input id="text_1" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <form action="">
+      <div class="input-field">
+        <input type="text" id="text_1" required />
+        <label for="name">Your Email:</label>
       </div>
-      <div class="input-group mb-3 mt-3">
-        <input id="pass_1" type="password" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </form>
+    <form action="">
+      <div class="input-field mt-4">
+        <input type="password" id="pass_1" required />
+        <label for="name">Your Password:</label>
       </div>
-            <button id="btn_1" class="btn btn-primary cus mt-3 mb-4">Login</button>
-            <button id="btn_google"  class="btn btn-primary cus mt-3 mb-4"><img src="./1298745_google_brand_branding_logo_network_icon.png" alt="" class="img">oogle</button>
+    </form>
+            <button id="btn_1" class="btn btn-primary cus mt-5 mb-4">Login</button>
+            <div class="">
+            <button id="btn_google"  class="google mt-3 mb-4 "><img src="./1298745_google_brand_branding_logo_network_icon.png" alt="" class="img"></button>
+            <button id="btn_google"  class="google mt-3 mb-4"><img src="./211904_social_github_icon (1).png" alt="" class="img"></button>
+            <button id="btn_google"  class="google mt-3 mb-4"><img src="./5296499_fb_facebook_facebook logo_icon.png" alt="" class="img"></button>
+          </div>
+            
 
-            <a href="./signup.html" class="text-center">SIGNUP</a>
+            <a href="./signup.html" class="text-center mb-3">SIGNUP</a>
    </div>
    <script type="module" defer src="login.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
